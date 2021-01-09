@@ -1,0 +1,45 @@
+body {
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    line-height: 1;
+    /* margin: auto;    */
+    width: 100%;
+  }
+
+header {
+    color:white;
+}
+
+.sidebar {
+    background-color: #edeeef;
+    float: left;
+    border-radius: 2%;
+    left: 0;
+}
+
+.sidebar-header {
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 22px;
+
+}
+
+#searchCityBtn {
+    background-color: #0275d8;
+}
+
+#currentCityName{
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#currentUVVal {
+    border-radius: 5%;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    
+}
+ .currentForecast {
+     display: none;
+}
