@@ -9,11 +9,12 @@ function displayForecasts() {
         event.preventDefault();
 
         $("div").removeClass("currentForecast");
+        $("div").removeClass("displayFuture");
 
         var city = $("#citySearchInput").val().trim();
 
         var currentForecastURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=65b1aeae514118478696fff2338437b0";
-        var futureForecastURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&appid=89984ca3ba5fa48da800bfaa61ada627";
+        var futureForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=65b1aeae514118478696fff2338437b0";
 
         $.ajax({
             url: currentForecastURL,
@@ -35,10 +36,9 @@ function displayForecasts() {
             $("#currentHumidity").text("Humidity: " + response.main.humidity + " %");
             $("#currentWind").text("Wind Speed: " + response.wind.speed + " MPH");
             
-            var lat = response.coord.lat
-            var lon = response.coord.lon  
+            var lat = response.coord.lat;
+            var lon = response.coord.lon; 
             var uvIndexURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=65b1aeae514118478696fff2338437b0";
-            // $("#currentUV").text("UV Index: ");  
             $.ajax({
                 url: uvIndexURL,
                 method: "GET"
@@ -52,8 +52,17 @@ function displayForecasts() {
             method: "GET"
         }).then(function(response){
             console.log(response);
-        });
-        
+            console.log(futureForecastURL);
+
+            // $("#sideCityBtns").empty();
+            var ul = $("<ul>");
+            var li = $("<li>");
+            var btn = $("<button>").addClass("btn btn-outline-dark sideCityBtn",);
+            $(btn).text(response.city.name);
+            $(li).append(btn);
+            $(ul).append(li);
+            $("#sideCityBtns").append(ul);
+        });       
     });
 }
 
@@ -72,10 +81,10 @@ function uvIndexColor(data) {
     }
 }
 
-function renderCityButtons() {
-    $("#sideCityBtns").empty();
+    
+        
+    
 
-}
 
 //append buttons to sidebar
 

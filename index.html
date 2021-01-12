@@ -14,57 +14,105 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link 
-      rel="preconnect" 
-      href="https://fonts.gstatic.com"
-    />
-    <link 
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/style.css"/>
+    <link rel="stylesheet" href="assets/style.css" />
     <title>Weather Dashboard</title>
   </head>
 
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <div class="container-fluid">
-              <h1 class="mx-auto display-4">Weather Dashboard</h1>
-            </div>
-        </nav>
-    </header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 col-xs-3 sidebar">
-                    <p class="sidebar-header">Search for a City:</p>
-                    <form class="form-inline">
-                        <input id="citySearchInput"class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light my-2 my-sm-0" id="searchCityBtn" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                    <div id="sideCityBtns" class="btn-group-vertical">
-                    </div>
-                </div>
-                <div class="col-md-8 col-xs-8 card ml-4 r-0 float-right currentForecast">
-                    <div class="card-header display-5" id="currentCityName">
-                        <div id="currentIcon">
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text" id="currentTemp"></p>
-                        <p class="card-text" id="currentHumidity"></p>
-                        <p class="card-text" id="currentWind"></p>
-                        <p class="card-text" id="currentUV">
-                            UV Index: <span id="currentUVVal"></span>
-                        </p>
-                    </div>                  
-                </div>     
-            </div>    
+          <h1 class="mx-auto display-4">Weather Dashboard</h1>
         </div>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 sidebar">
+          <p class="sidebar-header">Search for a City:</p>
+          <form class="form-inline">
+            <input
+              id="citySearchInput"
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-light my-2 my-sm-0"
+              id="searchCityBtn"
+              type="submit"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <div id="sideCityBtns" class="btn-group-vertical">
+
+          </div>
+        </div>
+        <div class="col-lg-9 card r-0 float-right currentForecast">        
+          <div class="card-header display-5" id="currentCityName">
+            <div id="currentIcon"></div>
+          </div>
+          <div class="card-body">
+            <p class="card-text" id="currentTemp"></p>
+            <p class="card-text" id="currentHumidity"></p>
+            <p class="card-text" id="currentWind"></p>
+            <p class="card-text" id="currentUV">
+              UV Index: <span id="currentUVVal"></span>
+            </p>
+          </div>
+          <div class="card-header display-5">
+            <p class="five-title">5-Day Forecast:</p>
+          </div>
+          <div class="row">
+            <div class="col-sm-2 card-body future-card border bg-primary">
+              <h4 class="card-text">1/11/1111</h4>
+              <div class="futureIcon"></div>
+              <p class="card-text">Temp:</p>
+              <br />
+              <p class="card-text">Humidity:</p>
+            </div>
+            <div class="col-sm-2 card-body future-card border bg-primary">
+              <h4 class="card-text">1/11/1111</h4>
+              <div class="futureIcon"></div>
+              <p class="card-text">Temp:</p>
+              <br />
+              <p class="card-text">Humidity:</p>
+            </div>
+            <div class="col-sm-2 card-body future-card border bg-primary">
+              <h4 class="card-text">1/11/1111</h4>
+              <div class="futureIcon"></div>
+              <p class="card-text">Temp:</p>
+              <br />
+              <p class="card-text">Humidity:</p>
+            </div>
+            <div class="col-sm-2 card-body future-card border bg-primary">
+              <h4 class="card-text">1/11/1111</h4>
+              <div class="futureIcon"></div>
+              <p class="card-text">Temp:</p>
+              <br />
+              <p class="card-text">Humidity:</p>
+            </div>
+            <div class="col-sm-2 card-body future-card border bg-primary">
+              <h4 class="card-text">1/11/1111</h4>
+              <div class="futureIcon"></div>
+              <p class="card-text">Temp:</p>
+              <br />
+              <p class="card-text">Humidity:</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/script.js"></script>
   </body>
 </html>
 
-<!-- <label class="btn btn-outline-danger" for="vbtn-radio2">Radio 2</label> -->

@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto Slab', serif;
     font-size: 16px;
     line-height: 1;
-    /* margin: auto;    */
+    margin: 0;
     width: 100%;
   }
 
@@ -14,7 +14,6 @@ header {
     background-color: #edeeef;
     float: left;
     border-radius: 2%;
-    left: 0;
 }
 
 .sidebar-header {
@@ -28,9 +27,18 @@ header {
     background-color: #0275d8;
 }
 
-#currentCityName{
+.forecast {
+    max-height: 300px;
+}
+
+#currentCityName {
     font-weight: bold;
     font-size: 28px;
+}
+
+.five-title {
+    font-size: 24px;
+    font-weight:bold;
 }
 
 #currentUVVal {
@@ -43,3 +51,29 @@ header {
  .currentForecast {
      display: none;
 }
+
+.displayFuture {
+    display:none;
+}
+
+.future-card {
+    height:auto;
+    width: 150px;
+    margin-right: 10px;
+    border-radius: 5%;
+}
+
+#sideCityBtns {
+    margin-top: 10px;
+}
+.sideCityBtn {
+    width: 250px;
+    border-radius: 5%;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+
