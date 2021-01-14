@@ -1,8 +1,13 @@
-var searchHistory = [];
+var searchHistoryArr = [];
 
 var currentDate = moment().format('M/DD/YYYY');
 
 $(document).ready(function() { 
+
+    for (var i = 0; i < searchHistoryArr.length; i++) {
+
+
+    }
 
     $("#searchCityBtn").on("click", function(event) {
         event.preventDefault(); 
@@ -12,22 +17,19 @@ $(document).ready(function() {
         var inputValue = $("#citySearchInput").val().trim();
 
         $("#citySearchInput").val("");
-        displayForecasts(inputValue);
+        displayForecasts(inputValue, true);
 
     });
 
-    $("#sideCityBtns").on("click", "li", function() {
-        displayForecasts($(this).text()); 
-        console.log($(this).text())  
+    $("#sideCityBtns").on("click", "li", function(event) {
+        event.preventDefault()
+        displayForecasts($(this).text(), false); 
     });
 
-    function displayForecasts(inputValue) {
-        console.log(inputValue);
+    function displayForecasts(inputValue, saveHistory) {
         var currentForecastURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputValue + "&appid=65b1aeae514118478696fff2338437b0";
         var futureForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputValue + "&appid=65b1aeae514118478696fff2338437b0";
         
-        console.log(inputValue);
-
         $.ajax({
             url: currentForecastURL,
             method: "GET"
@@ -61,19 +63,10 @@ $(document).ready(function() {
             url: futureForecastURL,
             method: "GET"
         }).then(function(response){
-            console.log(response);
-            console.log(futureForecastURL);
+            // console.log(response);
+            // console.log(futureForecastURL);
 
-            addHistory(response);
-
-
-            // var li = $("<li>").addClass("list-group-item list-group-item-action");
-            // var btn = $("<button>").addClass("btn btn-outline-dark sideCityBtn",);
-            // $(btn).text(response.city.name);
-            // $(li).append(btn);
-            // $("#sideCityBtns").append(li);
-
-
+            if (saveHistory) addHistory(response.city.name);
 
             var day1 = createFutureDates(1);
             var day2 = createFutureDates(2);
@@ -137,11 +130,17 @@ $(document).ready(function() {
 
         });       
     }
+    searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
-    function addHistory(response) {
+    function addHistory(text) {
+
+        searchHistoryArr.push(text);
+            
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr));
+
         var li = $("<li>").addClass("list-group-item list-group-item-action");
         var btn = $("<button>").addClass("btn btn-outline-dark sideCityBtn",);
-        $(btn).text(response.city.name);
+        $(btn).text(text);
         $(li).append(btn);
         $("#sideCityBtns").append(li);
         
@@ -165,7 +164,16 @@ $(document).ready(function() {
         return moment(currentDate, "M/DD/YYYY").add(day, 'd').format("M/DD/YYYY");   
     }
     
-    
+    searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || [];
+console.log(searchHistoryArr);
+    if (searchHistoryArr.length > 0) {
+        $("div").removeClass("currentForecast");
+        $("div").removeClass("displayFuture");
+        displayForecasts(searchHistoryArr[searchHistoryArr.length-1], true);
+        console.log(searchHistoryArr[searchHistoryArr.length-1]);
+    }
+
+   
 
 }); 
         
