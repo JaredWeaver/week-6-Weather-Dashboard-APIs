@@ -70,15 +70,12 @@ header {
     margin-left: 5px;
 }
 
-#sideCityBtns {
 
-}
 .sideCityBtn {
-    width: 300px;
+    width: 200px;
     border-radius: 5%;
     background-color: rgb(29, 33, 44);
     color: white;
-    margin-bottom: 0;
 }
 
 ul {
