@@ -4,11 +4,6 @@ var currentDate = moment().format('M/DD/YYYY');
 
 $(document).ready(function() { 
 
-    for (var i = 0; i < searchHistoryArr.length; i++) {
-
-
-    }
-
     $("#searchCityBtn").on("click", function(event) {
         event.preventDefault(); 
         $("div").removeClass("currentForecast");
@@ -34,7 +29,6 @@ $(document).ready(function() {
             url: currentForecastURL,
             method: "GET"
         }).then(function(response){
-            console.log(response);
         
             $("#currentCityName").text(response.name + " " + "(" + currentDate + ")");
 
@@ -63,8 +57,6 @@ $(document).ready(function() {
             url: futureForecastURL,
             method: "GET"
         }).then(function(response){
-            // console.log(response);
-            // console.log(futureForecastURL);
 
             if (saveHistory) addHistory(response.city.name);
 
@@ -165,11 +157,10 @@ $(document).ready(function() {
     }
     
     searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory")) || [];
-console.log(searchHistoryArr);
     if (searchHistoryArr.length > 0) {
         $("div").removeClass("currentForecast");
         $("div").removeClass("displayFuture");
-        displayForecasts(searchHistoryArr[searchHistoryArr.length-1], true);
+        displayForecasts(searchHistoryArr[searchHistoryArr.length-1], false);
         console.log(searchHistoryArr[searchHistoryArr.length-1]);
     }
 
