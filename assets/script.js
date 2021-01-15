@@ -113,7 +113,6 @@ $(document).ready(function() {
             var futureConv5 = (response.list[39].main.temp - 273.15) * 1.80 + 32;
             $("#temp5").text("Temp: " + futureConv5.toFixed(2) + " °" + "F");
 
-
             $("#humid1").text("Humidity: " + response.list[7].main.humidity + " %");
             $("#humid2").text("Humidity: " + response.list[15].main.humidity + " %");
             $("#humid3").text("Humidity: " + response.list[23].main.humidity + " %");
@@ -138,7 +137,6 @@ $(document).ready(function() {
         
     }
 
-
     function uvIndexColor(data) {
         
         if (data.value <= 2) {
@@ -161,43 +159,5 @@ $(document).ready(function() {
         $("div").removeClass("currentForecast");
         $("div").removeClass("displayFuture");
         displayForecasts(searchHistoryArr[searchHistoryArr.length-1], false);
-        console.log(searchHistoryArr[searchHistoryArr.length-1]);
     }
-
-   
-
 }); 
-        
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//xx GIVEN a weather dashboard with form inputs 
-//xx WHEN I search for a city
-//xx THEN I am presented with current and future conditions for that city and that city is added to the search history
-//xx WHEN I view current weather conditions for that city
-//xx THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-//xx WHEN I view the UV index
-//xx THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-//xx WHEN I view future weather conditions for that city
-//xx THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-//xx WHEN I click on a city in the search history
-//xx THEN I am again presented with current and future conditions for that city
-// WHEN I open the weather dashboard
-// THEN I am presented with the last searched city forecast
-
-
-
